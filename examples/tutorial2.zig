@@ -22,11 +22,14 @@ pub fn main() void {
     // Start from the first cell. Rows and columns are zero indexed.
     var row: u32 = 0;
     const col: u16 = 0;
-    const index: usize = 0;
 
     // Add a bold format to use to highlight cells.
     const bold: ?*xlsxwriter.lxw_format = xlsxwriter.workbook_add_format(workbook);
     _ = xlsxwriter.format_set_bold(bold);
+
+    const bold_rightjustified: ?*xlsxwriter.lxw_format = xlsxwriter.workbook_add_format(workbook);
+    _ = xlsxwriter.format_set_bold(bold_rightjustified);
+    _ = xlsxwriter.format_set_align(bold_rightjustified, xlsxwriter.LXW_ALIGN_RIGHT);
 
     // Add a number format for cells with money.
     const money: ?*xlsxwriter.lxw_format = xlsxwriter.workbook_add_format(workbook);
@@ -41,18 +44,24 @@ pub fn main() void {
 
     // Write some data header.
     _ = xlsxwriter.worksheet_write_string(worksheet, row, col, "Item", bold);
-    _ = xlsxwriter.worksheet_write_string(worksheet, row, col + 1, "Cost", bold);
+    _ = xlsxwriter.worksheet_write_string(worksheet, row, col + 1, "Date", bold);
+    _ = xlsxwriter.worksheet_write_string(worksheet, row, col + 2, "Cost", bold_rightjustified);
+    row += 1;
 
     // Iterate over the data and write it out element by element.
-    while (row < 4) : (row += 1) {
+    var index: usize = 0;
+    for (expenses) |_| {
         _ = xlsxwriter.worksheet_write_string(worksheet, row, col, expenses[index].item, null);
         _ = xlsxwriter.worksheet_write_datetime(worksheet, row, col + 1, &expenses[index].datetime, date_format);
         _ = xlsxwriter.worksheet_write_number(worksheet, row, col + 2, expenses[index].cost, money);
+        index += 1;
+        row += 1;
     }
 
     // Write a total using a formula.
-    _ = xlsxwriter.worksheet_write_string(worksheet, row, col, "Total", 0);
-    _ = xlsxwriter.worksheet_write_formula(worksheet, row + 1, col + 2, "=SUM(C2:C5)", null);
+    _ = xlsxwriter.worksheet_write_string(worksheet, row, col, "Total", bold);
+    _ = xlsxwriter.worksheet_write_formula(worksheet, row, col + 2, "=SUM(C2:C5)", bold_rightjustified);
+    row += 1;
 
     // Save the workbook and free any allocated memory.
     _ = xlsxwriter.workbook_close(workbook);

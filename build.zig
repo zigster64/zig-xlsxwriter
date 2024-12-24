@@ -15,7 +15,6 @@ pub fn build(b: *std.Build) void {
 
     // get libxlsxwriter
     xlsxwriter_module.linkLibrary(xlsxwriter_dep.artifact("xlsxwriter"));
-    xlsxwriter_module.link_libc = true;
 
     makeExample(b, .{
         .path = "examples/tutorial1.zig",

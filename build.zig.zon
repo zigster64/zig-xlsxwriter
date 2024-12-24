@@ -3,9 +3,13 @@
     .version = "0.1.0",
     .dependencies = .{
         .xlsxwriter = .{
-            .url = "git+https://github.com/kassane/libxlsxwriter?ref=zig-build#3d258a4c7418c4d27d712d1d0b99692dd300e9fe",
-            .hash = "1220b6b099174e25a087c75884789c155cba82f2d81b7137624c69cb628b1abb7b70",
+            .url = "git+https://github.com/zigster64/libxlsxwriter#fix-add-c-macro",
+            .hash = "122060def7b010f15f821b0c4a53a716defd430105f19b81b3ec937a1f32ccdc6ef2",
         },
+        //.xlsxwriter = .{
+            //.url = "git+https://github.com/kassane/libxlsxwriter?ref=zig-build#3d258a4c7418c4d27d712d1d0b99692dd300e9fe",
+            //.hash = "1220b6b099174e25a087c75884789c155cba82f2d81b7137624c69cb628b1abb7b70",
+        //},
     },
     .paths = .{""},
 }

@@ -1,5 +1,6 @@
 .{
-    .name = "zig-xlsxwriter",
+    .name = .zigXLSwriter,
+    .fingerprint = 0x2eeda68962ae0e31,
     .version = "0.1.0",
     .dependencies = .{
         .xlsxwriter = .{

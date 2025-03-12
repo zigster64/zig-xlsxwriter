@@ -6,7 +6,7 @@
     .dependencies = .{
         .xlsxwriter = .{
             .url = "git+https://github.com/zigster64/libxlsxwriter#zig-build-changes",
-            .hash = "libxlsxwriter-1.1.9-Dq0v8pUEHACiemQwgrNAaGk1elgVIxb32KmHOL5p9jQU",
+            .hash = "libxlsxwriter-1.1.9-Dq0v8roEHAD-gH3RYYcZIq5qPI6AeugDIWHYrRiEU6Oc",
         },
     },
     .paths = .{""},

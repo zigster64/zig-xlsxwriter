@@ -2,6 +2,7 @@
     .name = .zigxlswriter,
     .fingerprint = 0x9ad77fe0f9e07716,
     .version = "0.1.0",
+    .minimum_zig_version = "0.14.0",
     .dependencies = .{
         .xlsxwriter = .{
             .url = "git+https://github.com/zigster64/libxlsxwriter#zig-build-changes",
